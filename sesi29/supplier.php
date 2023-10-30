@@ -1,6 +1,6 @@
 <?php
 include 'connection.php';
-$query = mysqli_query($conn, "SELECT * FROM produk JOIN supplier ON produk.supplier_id = supplier.id");
+$query = mysqli_query($conn, "SELECT * FROM supplier");
 ?>
 <!doctype html>
 <html lang="en">
@@ -17,9 +17,9 @@ $query = mysqli_query($conn, "SELECT * FROM produk JOIN supplier ON produk.suppl
     <div class="container">
         <header class="d-flex justify-content-center py-3">
             <ul class="nav nav-pills">
-                <li class="nav-item"><a href="index.php" class="nav-link active" aria-current="page">Produk</a></li>
+                <li class="nav-item"><a href="index.php" class="nav-link" aria-current="page">Produk</a></li>
                 <li class="nav-item"><a href="pelanggan.php" class="nav-link">Pelanggan</a></li>
-                <li class="nav-item"><a href="supplier.php" class="nav-link">Supplier</a></li>
+                <li class="nav-item"><a href="supplier.php" class="nav-link active">Supplier</a></li>
             </ul>
         </header>
     </div>
@@ -28,20 +28,17 @@ $query = mysqli_query($conn, "SELECT * FROM produk JOIN supplier ON produk.suppl
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        DATA PRODUK
+                        DATA SUPPLIER
                     </div>
                     <div class="card-body">
-                        <a href="#" class="btn btn-md btn-success" style="margin-bottom: 10px">TAMBAH PRODUK</a>
-                        <table class="table text-center table-hover" id="Table">
+                        <a href="#" class="btn btn-md btn-success" style="margin-bottom: 10px">TAMBAH SUPPLIER</a>
+                        <table class="table table-hover" id="Table">
                             <thead>
                                 <tr>
                                     <th scope="col">No.</th>
-                                    <th scope="col">Kode Produk</th>
-                                    <th scope="col">Nama Produk</th>
-                                    <th scope="col">Harga</th>
-                                    <th scope="col">Stok</th>
-                                    <th scope="col">Satuan</th>
-                                    <th scope="col">Supplier</th>
+                                    <th scope="col">Nama</th>
+                                    <th scope="col">Telpon</th>
+                                    <th scope="col">Alamat</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -51,12 +48,9 @@ $query = mysqli_query($conn, "SELECT * FROM produk JOIN supplier ON produk.suppl
                                 ?>
                                     <tr>
                                         <td><?php echo $no++ ?></td>
-                                        <td><?php echo $row['kode_produk'] ?></td>
-                                        <td><?php echo $row['nama_produk'] ?></td>
-                                        <td><?php echo $row['harga'] ?></td>
-                                        <td><?php echo $row['stok'] ?></td>
-                                        <td><?php echo $row['satuan'] ?></td>
                                         <td><?php echo $row['nama'] ?></td>
+                                        <td><?php echo $row['telpon'] ?></td>
+                                        <td><?php echo $row['alamat'] ?></td>
                                     </tr>
                                 <?php } ?>
                             </tbody>
