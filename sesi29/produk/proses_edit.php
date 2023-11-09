@@ -11,7 +11,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $satuan = $_POST['satuan'];
     $supplier_id = $_POST['supplier'];
 
-    // Update data in the database
     $update_query = "UPDATE produk SET 
                     kode_produk = '$kode_produk', 
                     nama_produk = '$nama_produk', 
