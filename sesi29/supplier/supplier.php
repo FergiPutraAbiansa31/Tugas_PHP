@@ -1,7 +1,8 @@
 <?php
-include 'connection.php';
+include '../connection.php';
 $query = mysqli_query($conn, "SELECT * FROM supplier");
 ?>
+
 <!doctype html>
 <html lang="en">
 
@@ -10,15 +11,15 @@ $query = mysqli_query($conn, "SELECT * FROM supplier");
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
-    <title>Data Produk</title>
+    <title>Data Supplier</title>
 </head>
 
 <body>
     <div class="container">
         <header class="d-flex justify-content-center py-3">
             <ul class="nav nav-pills">
-                <li class="nav-item"><a href="index.php" class="nav-link" aria-current="page">Produk</a></li>
-                <li class="nav-item"><a href="pelanggan.php" class="nav-link">Pelanggan</a></li>
+                <li class="nav-item"><a href="../index.php" class="nav-link" aria-current="page">Produk</a></li>
+                <li class="nav-item"><a href="../pelanggan/pelanggan.php" class="nav-link">Pelanggan</a></li>
                 <li class="nav-item"><a href="supplier.php" class="nav-link active">Supplier</a></li>
             </ul>
         </header>
@@ -31,7 +32,7 @@ $query = mysqli_query($conn, "SELECT * FROM supplier");
                         DATA SUPPLIER
                     </div>
                     <div class="card-body">
-                        <a href="#" class="btn btn-md btn-success" style="margin-bottom: 10px">TAMBAH SUPPLIER</a>
+                        <a href="tambah.php" class="btn btn-md btn-success" style="margin-bottom: 10px">TAMBAH SUPPLIER</a>
                         <table class="table table-hover" id="Table">
                             <thead>
                                 <tr>
@@ -39,6 +40,7 @@ $query = mysqli_query($conn, "SELECT * FROM supplier");
                                     <th scope="col">Nama</th>
                                     <th scope="col">Telpon</th>
                                     <th scope="col">Alamat</th>
+                                    <th scope="col">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -51,6 +53,11 @@ $query = mysqli_query($conn, "SELECT * FROM supplier");
                                         <td><?php echo $row['nama'] ?></td>
                                         <td><?php echo $row['telpon'] ?></td>
                                         <td><?php echo $row['alamat'] ?></td>
+                                        <td>
+                                            <a class="btn btn-sm btn-warning" href="edit.php?id=<?php echo $row['id'] ?>">EDIT</a>
+                                            <a class="btn btn-sm btn-danger" href="proses_hapus.php?id=<?php echo $row['id'] ?>" 
+                                            onclick="return confirm('Hapus ?');">HAPUS</a>
+                                        </td>
                                     </tr>
                                 <?php } ?>
                             </tbody>

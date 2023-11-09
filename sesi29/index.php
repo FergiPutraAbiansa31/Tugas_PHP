@@ -18,8 +18,8 @@ $query = mysqli_query($conn, "SELECT * FROM produk JOIN supplier ON produk.suppl
         <header class="d-flex justify-content-center py-3">
             <ul class="nav nav-pills">
                 <li class="nav-item"><a href="index.php" class="nav-link active" aria-current="page">Produk</a></li>
-                <li class="nav-item"><a href="pelanggan.php" class="nav-link">Pelanggan</a></li>
-                <li class="nav-item"><a href="supplier.php" class="nav-link">Supplier</a></li>
+                <li class="nav-item"><a href="pelanggan/pelanggan.php" class="nav-link">Pelanggan</a></li>
+                <li class="nav-item"><a href="supplier/supplier.php" class="nav-link">Supplier</a></li>
             </ul>
         </header>
     </div>
@@ -31,7 +31,7 @@ $query = mysqli_query($conn, "SELECT * FROM produk JOIN supplier ON produk.suppl
                         DATA PRODUK
                     </div>
                     <div class="card-body">
-                        <a href="#" class="btn btn-md btn-success" style="margin-bottom: 10px">TAMBAH PRODUK</a>
+                        <a href="produk/tambah.php" class="btn btn-md btn-success" style="margin-bottom: 10px">TAMBAH PRODUK</a>
                         <table class="table text-center table-hover" id="Table">
                             <thead>
                                 <tr>
@@ -42,6 +42,7 @@ $query = mysqli_query($conn, "SELECT * FROM produk JOIN supplier ON produk.suppl
                                     <th scope="col">Stok</th>
                                     <th scope="col">Satuan</th>
                                     <th scope="col">Supplier</th>
+                                    <th scope="col">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -57,6 +58,11 @@ $query = mysqli_query($conn, "SELECT * FROM produk JOIN supplier ON produk.suppl
                                         <td><?php echo $row['stok'] ?></td>
                                         <td><?php echo $row['satuan'] ?></td>
                                         <td><?php echo $row['nama'] ?></td>
+                                        <td>
+                                            <a class="btn btn-sm btn-warning" href="produk/edit.php?id=<?php echo $row['id'] ?>">EDIT</a>
+                                            <a class="btn btn-sm btn-danger" href="produk/proses_hapus.php?id=<?php echo $row['id'] ?>" 
+                                            onclick="return confirm('Hapus ?');">HAPUS</a>
+                                        </td>
                                     </tr>
                                 <?php } ?>
                             </tbody>
